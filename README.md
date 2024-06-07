@@ -1,8 +1,9 @@
-# Twomes software repository template
-A template repository for the Twomes project.
+# NeedForHeat analysis tools for domestic energy data using static models
+This repository contains source code for the NeedForHeat heat balance models and analysis tools, based on static models, e.g. using day totals. For analysis tools that use dynamic models, we refer to [needforheat-dynamic-analysis](https://github.com/energietransitie/needforheat-dynamic-analysis). 
 
 ## Table of contents
 * [General info](#general-info)
+* [Prerequisites](#prerequisites)
 * [Deploying](#deploying)
 * [Developing](#developing) 
 * [Features](#features)
@@ -11,36 +12,79 @@ A template repository for the Twomes project.
 * [Credits](#credits)
 
 ## General info
-Add more general information about the repo. What is purpose of the code in the repo? Motivation?
 
-## Deploying
-This section describes how you can deploy binary releases of the firmware, i.e. without changing the source code, without a development environment and without needing to compile the source code.
+This repository contains the code (mostly in the for op JupyterLab pyshon code) of the static analysis software. This software was developed in the context of [REDUCEDHEATCARB](https://edu.nl/gutuc), a research project in which we extend the dynamic models from [Twomes](https://edu.nl/9fv8w) and [Brains4Buildings](https://edu.nl/kynxd) with new dynamic models for ventilation and learning heat distribution systems characteristics. The static analysis software in this repository was created in an effort to test whether less complex static analysis models can deliver automated estimation of crucial parameters of buildings, installations and comfort needs in individual homes based on time-series monitoring data that are on par with the results based on more complex, dynamic models.
 
-### Prerequisites
-Describe which (hardware and) software you need before you can deploy the software. If the prerequisites are different the same for deploying users and developing users, you may want to merge the prerequisites sections.
+For the required field data, including metadata descriptions, we refer to [needforheat-dataset-reducedheatcarb2023](https://github.com/energietransitie/needforheat-dataset-reducedheatcarb2023)
 
-### Other steps 
-Describe how the reader can download and install the lastest installable version(s). If appropriate, link to the latest binary release or package you published in the repo. If needed, describe this for different platforms.
-Use steps if the procedure is non-trivial:
-1. first step;
-2. second step;
-3. final step.
+## Prerequisites
 
-Format any scripts or commands in a way that makes them  easy to copy, like the following example. 
+We recommend to [install and use JupyterLab in a docker container on a server](https://github.com/energietransitie/needforheat-server-configuration#jupyterlab).
 
-Forgotten your Wi-Fi password? No problem with the follwing command, replacing `SSID` with the Wi-Fi name of your own Wi-Fi network: 
-```shell
-netsh wlan show profile SSID key=clear
+As an alternative, you can use a [JupyterLab](https://jupyter.org/) environment on your local machine. Other environments, such as [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows) and [Visual Studio Code](https://code.visualstudio.com/) may work as well, but we do not include documentation for this here. 
+
+To use JupyterLab on your local machine, make sure you have the following software properly installed and configured on your machine:
+
+### Step 1: Install Python
+If you haven't already installed it, go to [Python](https://www.python.org/downloads/) and install at least version 3.8, which includes `pip`, the package manager you need in the steps below.
+
+### Step 2: Install and Launch JupyterLab
+
+If you haven't already installed JupyterLab, you can [install JupyterLab](https://jupyter.org/install#jupyterlabl) with the following pip command in your terminal:
+
+```
+pip install jupyterlab
 ```
 
-## Developing
-This section describes how you can change the source code using a development environment and compile the source code into a binary release of the firmware that can be deployed, either via the development environment, or via the method described in the section [Deploying](#deploying).
+To add support for git from within the JupyterLab environment, issue the following command in your terminal:
+```
+pip install jupyterlab-git
+```
 
-### Prerequisites
-Describe which (hardware and) software you need before you can change or extend the source code. If the prerequisites are different the same for deploying users and developing users, you may want to merge the prerequisites sections.
+Once you've installed JupyterLab, you can launch JupyterLab by running the following command in your terminal:
+
+> **Note**
+> In the step after this, we explain how to clone this repository from within jupyter-lab.
+> If you are working locally and are familiar with using git, you can manually clone this repository,
+> and open a terminal in the cloned directory before running the command below. You can then skip step 3.
+
+```
+jupyter-lab
+```
+
+This will open JupyterLab in your default web browser. 
+### Step 3: Clone this Repository
+
+In JupyterLab, navigate to the folder where you would like to clone this repository, select the git-icon in the left pane, select `Clone a Repository` and pase the URI for this repository, which is available via the green `<> Code` button on the GitHub page of this repository.
+
+### Step 4: Install the Required Dependencies
+
+After cloning this this respository, install requirements: open a terminal in JuypyterLab (available via the JupyterLab Launcher, via the `+` tab), navigate to the root folder of your clone of this repository and enter this command: 
+  ```shell
+  pip install -r requirements.txt
+  ```  
+
+This will install all the required dependencies listed in the [`requirements.txt`](requirements.txt) file.
+
+## Deploying
+
+This section describes how you can use the IPython notebooks, without changing the Python code. After installing JupyterLab as described above, you can run the software by opening up `.ipynb ` files and run the contents from TO BE DESRIBED FURTHER
+
+## Developing
+
+This section describes how you can change the source code. You can do this using JupyterLab, as described in the section [Deploying](#deploying). Other development environments, such as [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows) and [Visual Studio Code](https://code.visualstudio.com/) may work as well, but we do not include documentation for this here. 
+
+Should you find any issues or bugs in our code, please report them via the [issues](https://github.com/energietransitie/needforheat-dynamic-analysis/issues) tab of this repository.
+
+To change the code, we recommend:
+
+* Try out your changes using the various `.ipynb ` files from the [`examples`](/examples) folder. The section [Deploying](#deploying) contains a high level description of these files.
+* Migrate stable code to functions in Python files.
+* Should you have extensions or bug fixes that could be useful for other users of the repository as well, please fork this reposotory and make a Pull Request on this repository. 
 
 ## Features
-List of features ready and TODOs for future development. Ready:
+
+Current features include:
 * awesome feature 1;
 * awesome feature 2;
 * awesome feature 3.
@@ -50,10 +94,10 @@ To-do:
 * wow improvement to be done 2.
 
 ## Status
-Project is: _in progress_, _finished_, _no longer continued_ and why?
+Project is: _in progress_?
 
 ## License
-This software is available under the [Apache 2.0 license](./LICENSE), Copyright 2021 [Research group Energy Transition, Windesheim University of Applied Sciences](https://windesheim.nl/energietransitie) 
+This software is available under the [Apache 2.0 license](./LICENSE), Copyright 2024 [Research group Energy Transition, Windesheim University of Applied Sciences](https://windesheim.nl/energietransitie) 
 
 ## Credits
 This software is a collaborative effort of:
@@ -72,7 +116,7 @@ Product owner:
 * Henri ter Hofte · [@henriterhofte](https://github.com/henriterhofte) · Twitter [@HeNRGi](https://twitter.com/HeNRGi)
 
 We use and gratefully acknowlegde the efforts of the makers of the following source code and libraries:
-* [library name 1 and version](library 1 URL), by <copyright holder name 1>, licensed under [license 1 name](license1 URL)
-* [library name 2 and version](library 2 URL), by <copyright holder name 2>, licensed under [license 2 name](license2 URL)
-* [library name 3 and version](library 3 URL), by <copyright holder name 3>, licensed under [license 3 name](license3 URL)
-* etc. 
+* [GEKKO Python](https://github.com/BYU-PRISM/GEKKO), by Advanced Process Solutions, LLC., licensed under [an MIT-style licence](https://github.com/BYU-PRISM/GEKKO/blob/master/LICENSE)
+* [needforheat-dynamic-analysis](https://github.com/energietransitie/needforheat-dynamic-analysis), by Research group Energy Transition, Windesheim University of Applied Sciences, licensed under [Apache-2.0 License](https://github.com/energietransitie/twomes-analysis-pipeline/blob/main/LICENSE)
+* [HourlyHistoricWeather](https://github.com/stephanpcpeters/HourlyHistoricWeather), by [@stephanpcpeters](https://github.com/stephanpcpeters), licensed under [an MIT-style licence](https://raw.githubusercontent.com/stephanpcpeters/HourlyHistoricWeather/master/historicdutchweather/LICENSE)
+
