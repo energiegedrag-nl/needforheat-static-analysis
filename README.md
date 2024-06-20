@@ -68,7 +68,22 @@ This will install all the required dependencies listed in the [`requirements.txt
 
 ## Deploying
 
-This section describes how you can use the IPython notebooks, without changing the Python code. After installing JupyterLab as described above, you can run the software by opening up `.ipynb ` files and run the contents from TO BE DESRIBED FURTHER
+This section describes how you can use the IPython notebooks, without changing the Python code. After installing JupyterLab as described above, you can run the software by opening Jupyter notebook `.ipynb ` files and run the contents. 
+
+> N.B. To run the various Jupyter notebooks, you typically need to upload one or more parquet files to your JupyterLabs environment. After re-identification checks in late 2024, these will become available via [needforheat-dataset-reducedheatcarb2023](https://github.com/energietransitie/needforheat-dataset-reducedheatcarb2023). If you need the files before this moment, contact the product owner to see if you are eligible to work with the files.
+> * [`needforheat_export_student.parquet`](https://github.com/energietransitie/needforheat-dataset-reducedheatcarb2023/blob/main/raw-measurements/needforheat_export_student.parquet)
+> * [`remeha_export_student.parquet`](https://github.com/energietransitie/needforheat-dataset-reducedheatcarb2023/blob/main/raw-measurements/remeha_export_student.parquet)
+> * [`weather_interpolation_locations.parquet`](https://github.com/energietransitie/needforheat-dataset-reducedheatcarb2023/blob/main/raw-measurements/weather_interpolation_locations.parquet)
+> * `reducedheatcarb_sane_measurements_students_data_science.parquet`
+> * `floor_area__m2`
+   
+Using the notebooks mentioned below, you can perform various analysis:
+1. For general data understanding, run [avg temp and g_use per day per id, data understanding.ipynb](/avg%20temp%20and%20g_use%20per%20day%20per%20id%2C%20data%20understanding.ipynb)
+2. To estimate the specific heat loss coefficienct H [W/K] per home, assuming no influence by solar heat gains, run WHICH_NOTEBOOK_TO_RUN
+3. To estimate the specific heat loss coefficienct H [W/K] per home, assuming an average solar aperture of 26.8 [m²], run WHICH_NOTEBOOK_TO_RUN
+4. To calculate realistic energy label, assuming standardized climate reference year and standardized comfort needs and other occupant behaviour, run WHICH_NOTEBOOK_TO_RUN.
+
+
 
 ## Developing
 
@@ -116,7 +131,6 @@ Product owner:
 * Henri ter Hofte · [@henriterhofte](https://github.com/henriterhofte) · Twitter [@HeNRGi](https://twitter.com/HeNRGi)
 
 We use and gratefully acknowlegde the efforts of the makers of the following source code and libraries:
-* [GEKKO Python](https://github.com/BYU-PRISM/GEKKO), by Advanced Process Solutions, LLC., licensed under [an MIT-style licence](https://github.com/BYU-PRISM/GEKKO/blob/master/LICENSE)
 * [needforheat-dynamic-analysis](https://github.com/energietransitie/needforheat-dynamic-analysis), by Research group Energy Transition, Windesheim University of Applied Sciences, licensed under [Apache-2.0 License](https://github.com/energietransitie/twomes-analysis-pipeline/blob/main/LICENSE)
 * [HourlyHistoricWeather](https://github.com/stephanpcpeters/HourlyHistoricWeather), by [@stephanpcpeters](https://github.com/stephanpcpeters), licensed under [an MIT-style licence](https://raw.githubusercontent.com/stephanpcpeters/HourlyHistoricWeather/master/historicdutchweather/LICENSE)
 
